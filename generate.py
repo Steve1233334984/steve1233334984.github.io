@@ -30,7 +30,7 @@ def paper(p, minimal=False):
 def render(filename, title, main, home=False, with_profile=True):
     nav = ''.join(f'<a href="{url}"'+(' aria-current="page"' if url == filename else '')+f'>{label}</a>' for label,url in [('Home','index.html'),('Research','research.html'),('Teaching','teaching.html'),('CV','cv.html')])
     person = {'@context':'https://schema.org', '@type':'Person', 'name':'Qingxu Yang', 'alternateName':'杨卿栩', 'jobTitle':'Assistant Professor', 'affiliation':{'@type':'CollegeOrUniversity','name':'Fudan University'}, 'url':ORIGIN, 'email':'qxyang@fudan.edu.cn'}
-    cv_link = '' if home else '<a class="cv-link" href="files/Qingxu_Yang_CV.pdf" download>Download CV <span aria-hidden="true">↓</span><span class="file-type">PDF</span></a>'
+    cv_link = '' if home else '<a class="cv-link" href="#" aria-disabled="true" tabindex="-1" onclick="return false;">Download CV <span aria-hidden="true">↓</span><span class="file-type">PDF</span></a>'
     profile = f'''<aside class="profile" aria-label="Profile">
 <div class="profile-name">Qingxu Yang<span lang="zh-Hans">杨卿栩</span></div>
 <p class="position">Assistant Professor</p><p class="affiliation">School of Economics<br>Fudan University</p>
@@ -82,6 +82,6 @@ teaching = '''<div class="page-title"><p class="eyebrow">Teaching</p><h1>Courses
 <p class="teaching-contact">For course enquiries, please contact <a href="mailto:qxyang@fudan.edu.cn">qxyang@fudan.edu.cn</a>.</p>'''
 render('teaching.html','Teaching',teaching)
 
-cv = '<p><a href="files/Qingxu_Yang_CV.pdf" download>Download CV</a></p>'
+cv = '<p><a href="#" aria-disabled="true" tabindex="-1" onclick="return false;">Download CV</a></p>'
 render('cv.html','CV',cv,with_profile=False)
 print('Generated 4 pages.')
